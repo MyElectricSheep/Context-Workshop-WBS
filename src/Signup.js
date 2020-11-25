@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
+import I18nContext from "./context/I18nContext";
 
 const Signup = () => {
+
+    const { t } = useContext(I18nContext);
 
     const notImplemented = () => {
         alert('We\'re sorry, this functionality is not implemented yet!')
@@ -9,11 +12,11 @@ const Signup = () => {
 
     return ( 
         <>
-        <input type="text" placeholder="Email"/>
-        <input type="text" placeholder="Password"/>
-        <button onClick={notImplemented}>Register</button>
+        <input type="text" placeholder={t.signup.email}/>
+        <input type="text" placeholder={t.signup.password}/>
+        <button onClick={notImplemented}>{t.signup.register}</button>
         <br/>
-        <Link to="/signin">Login</Link>
+        <Link to="/signin">{t.signup.signin}</Link>
         </>
      );
 }

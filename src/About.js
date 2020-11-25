@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import I18nContext from "./context/I18nContext";
 
 const About = () => {
+  const { t } = useContext(I18nContext);
   return (
     <>
-      <div>About Bwok</div>
+      <div>{t.about.title}</div>
     </>
   );
 };

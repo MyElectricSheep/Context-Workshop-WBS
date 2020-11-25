@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import CompanyContext from "./context/CompanyContext"
+import I18nContext from "./context/I18nContext";
 import Welcome from "./Welcome";
 
 const Admin = () => {
+  const [newCustomerValue, setNewCustomerValue] = useState('')
+  const { companyInfo, setCompanyInfo } = useContext(CompanyContext)
+  const { t } = useContext(I18nContext);
   return (
     <>
-      <h3>Company name</h3>
+      <h3>{companyInfo.name}</h3>
       <br />
-      <div>Admin Page</div>
+      <div>{t.admin.title}</div>
       <br />
       <Welcome />
       <br />
-      <div>Lots of important secret stuff...</div>
-      {/* <input
+      <div>{t.admin.changeCustomers}</div>
+      <input
         value={newCustomerValue}
         onChange={(e) => setNewCustomerValue(e.target.value)}
         placeholder="Daily customers"
         type="text"
-      /> */}
-      {/* <button
+      />
+      <button
         onClick={(e) => {
-          setCompanyData({ ...companyData, customers: newCustomerValue });
+          setCompanyInfo({ ...companyInfo, customers: newCustomerValue });
         }}
       >
         Save
-      </button> */}
+      </button>
     </>
   );
 };
